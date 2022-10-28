@@ -27,7 +27,7 @@ namespace Decorator
             return this;
         }
 
-        void SetExpression(string exp)
+        public void SetExpression(string exp)
         {
             _expression = exp;
         }
