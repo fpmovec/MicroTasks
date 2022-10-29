@@ -9,6 +9,8 @@ using System.IO.Compression;
 using System.IO;
 using SharpCompress.Archives.Rar;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Decorator
 {
@@ -149,7 +151,12 @@ namespace Decorator
         public override object Reader()
         {
             object improve = base.Reader();
-            improve += "\n + MD5 1!";
+            string exp = ((FileItem)improve).GetExpression();
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] checkSum = md5.ComputeHash(Encoding.UTF8.GetBytes(exp));
+            string result = BitConverter.ToString(checkSum).Replace("-", String.Empty);
+
+            ((FileItem)improve).SetHashExpression(result);
             return improve;
         }
 
