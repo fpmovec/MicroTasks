@@ -1,5 +1,4 @@
-﻿//В данном проекте я создаю разные модели телефонов
-//с уникальными для других моделей функциями используя паттерн абстрактная фабрика
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -13,137 +12,131 @@ namespace AbstractFabric
     {
         static void Main(string[] args)
         {
-            Mobile samsung = new Mobile(new Samsung());
-            samsung.OS();
-            samsung.Store();
-            samsung.Camera();
+            //Example 1
+            Mobile mobile = new Mobile("IOS", 1.0);
 
-            Mobile iphone = new Mobile(new Iphone());
-             iphone.OS();
-            iphone.Store();
-            iphone.Camera();
+            Console.WriteLine();
+
+            //Example 2
+            Mobile mobile1 = new Mobile("Android", 1.2);
         }
     }
 
-    abstract class Camera
+    public class MobileFactory
     {
-        public abstract void Photo();
-    }
-    abstract class Store
-    {
-        public abstract void StoreType();
-    }
-   abstract class OperatingSystem
-    {
-        public abstract void SystemType();
-    }
+        public IMobile createMobile(string platform, double version)
+        {
+            if (platform.Equals("IOS"))
+            {
+                return new IOSPlatform(version);
+            }
+            else if (platform.Equals("Android"))
+            {
+                return new AndroidPlatform(version);
+            }
 
-    class InfraredCamera : Camera
-    {
-        public override void Photo()
-        {
-            Console.WriteLine("Buit-in infrared camera!\n");
-        }
-    }
-    class NightCamera : Camera
-    {
-        public override void Photo()
-        {
-            Console.WriteLine("Built-in a night camera!\n");
-        }
-    }
-    class Android : OperatingSystem
-    {
-        public override void SystemType()
-        {
-            Console.WriteLine("Operating system: Android");
-        }
-    }
-    class IOS : OperatingSystem
-    {
-        public override void SystemType()
-        {
-            Console.WriteLine("Operating system: IOS");
-        }
-    }
-    class Google : Store
-    {
-        public override void StoreType()
-        {
-            Console.WriteLine("I have the GooglePlay!");
-        }
-    }
-    class Apple : Store
-    {
-        public override void StoreType()
-        {
-            Console.WriteLine("I have the AppleStore!");
+            throw new FormatException(platform);
         }
     }
 
-    abstract class MobileFactory
+
+    class IOSPlatform : IMobile
     {
-        public abstract OperatingSystem CreateOS();
-        public abstract Store CreateStore();
-        public abstract Camera CreateCamera();
+        private double _functionsVersion;
+        public IOSPlatform(double functionsVersion)
+        {
+            _functionsVersion = functionsVersion;
+        }
+        public IOperatingSystem CreateOS()
+        {
+            switch (_functionsVersion)
+            {
+                case 1.0: return new IOS_Specifications.SystemVersion1_0();
+                case 1.1: return new IOS_Specifications.SystemVersion1_1();
+                case 1.2: return new IOS_Specifications.SystemVersion1_2();
+               
+            }
+            throw new ArgumentException("This version don't exist!");
+        }
+        public IFunctionsVersion CreateFV()
+        {
+            switch (_functionsVersion)
+            {
+                case 1.0: return new IOS_Specifications.FunctionsVersion1_0();
+                case 1.2: return new IOS_Specifications.FunctionsVersion1_1();
+                case 1.3: return new IOS_Specifications.FunctionsVersion1_2();
+                
+            }
+            throw new ArgumentException("This version don't exist!");
+        }
+        public IBuildNumber CreateBN()
+        {
+           switch (_functionsVersion)
+           {
+                case 1.0: return new IOS_Specifications.BuildNumber1_0();
+                case 1.1: return new IOS_Specifications.BuildNumber1_1();
+                case 1.2: return new IOS_Specifications.BuildNumber1_2();
+           }
+            throw new ArgumentException("This version don't exist!");
+        }
     }
 
-    class Iphone : MobileFactory
+    class AndroidPlatform : IMobile
     {
-        public override OperatingSystem CreateOS()
+        private double _functionsVersion;
+        public AndroidPlatform(double functionsVersion)
         {
-            return new IOS();
+            _functionsVersion = functionsVersion;
         }
-        public override Store CreateStore()
+        public IOperatingSystem CreateOS()
         {
-            return new Apple();
+                switch (_functionsVersion)
+                {
+                    case 1.0: return new Android_Specifications.SystemVersion1_0();
+                    case 1.1: return new Android_Specifications.SystemVersion1_1();
+                    case 1.2: return new Android_Specifications.SystemVersion1_2();
+                }
+            throw new ArgumentException("This version don't exist!");
         }
-        public override Camera CreateCamera()
+        public IFunctionsVersion CreateFV()
         {
-            return new InfraredCamera();
+            switch (_functionsVersion)
+            {
+                case 1.0: return new Android_Specifications.FunctionsVersion1_0();
+                case 1.1: return new Android_Specifications.FunctionsVersion1_1();
+                case 1.2: return new Android_Specifications.FunctionsVersion1_2();
+            }
+            throw new ArgumentException("This version don't exist!");
         }
-    }
-
-    class Samsung : MobileFactory
-    {
-        public override OperatingSystem CreateOS()
+        public IBuildNumber CreateBN()
         {
-            return new Android();
-        }
-        public override Store CreateStore()
-        {
-            return new Google();
-        }
-        public override Camera CreateCamera()
-        {
-            return new NightCamera();
+            switch (_functionsVersion)
+            {
+                case 1.0: return new Android_Specifications.BuildNumber1_0();
+                case 1.1: return new Android_Specifications.BuildNumber1_1();
+                case 1.2: return new Android_Specifications.BuildNumber1_2();
+            }
+            throw new ArgumentException("This version don't exist!");
         }
     }
 
     class Mobile
     {
-        private OperatingSystem _os;
-        private Store _store;
-        private Camera _camera;
-
-        public Mobile(MobileFactory mobileFactory)
+        private IOperatingSystem _os;
+        private IFunctionsVersion _version;
+        private IBuildNumber _build;
+        public Mobile(string platform, double version)
         {
-            _os = mobileFactory.CreateOS();
-            _store = mobileFactory.CreateStore();   
-            _camera = mobileFactory.CreateCamera();
-        }
+            MobileFactory factory = new MobileFactory();
+            IMobile mobile = factory.createMobile(platform, version);
+            _os = mobile.CreateOS();
+            _version = mobile.CreateFV();
+            _build = mobile.CreateBN();
 
-        public void OS()
-        {
             _os.SystemType();
-        }
-        public void Camera()
-        {
-            _camera.Photo();
-        }
-        public void Store()
-        {
-            _store.StoreType();
+            _version.FunctionsVersion();
+            _build.BuildNumber();
+
         }
     }
 }

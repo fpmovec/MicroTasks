@@ -43,11 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Android_Specifications\BuildNumbers.cs" />
+    <Compile Include="Android_Specifications\FunctionsVersions.cs" />
+    <Compile Include="Android_Specifications\SystemTypes.cs" />
+    <Compile Include="Inrefaces.cs" />
+    <Compile Include="IOS_Specifications\BuildNumbers.cs" />
+    <Compile Include="IOS_Specifications\FunctionsVersions.cs" />
+    <Compile Include="IOS_Specifications\SystemTypes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
