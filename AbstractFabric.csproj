@@ -46,7 +46,7 @@
     <Compile Include="Android_Specifications\BuildNumbers.cs" />
     <Compile Include="Android_Specifications\FunctionsVersions.cs" />
     <Compile Include="Android_Specifications\SystemTypes.cs" />
-    <Compile Include="Inrefaces.cs" />
+    <Compile Include="Interfaces.cs" />
     <Compile Include="IOS_Specifications\BuildNumbers.cs" />
     <Compile Include="IOS_Specifications\FunctionsVersions.cs" />
     <Compile Include="IOS_Specifications\SystemTypes.cs" />
