@@ -6,7 +6,7 @@ namespace SingletonDBConnection
     public sealed class DbConnectionSingleton
     {
         private static volatile DbConnectionSingleton? _instance;
-        private static readonly object dbConnection = new();
+        private static readonly object _syncRoot = new();
 
         public DbConnectionSingleton() { }
         public static DbConnectionSingleton Instance
@@ -15,7 +15,7 @@ namespace SingletonDBConnection
             {
                 if (_instance == null)
                 {
-                    lock (dbConnection)
+                    lock (_syncRoot)
                     {
                         if (_instance == null)
                             _instance = new DbConnectionSingleton();
