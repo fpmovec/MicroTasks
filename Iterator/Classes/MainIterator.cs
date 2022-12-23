@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Directory = Composite_Iterator_Visitor.Composite.Directory;
 
 namespace Composite_Iterator_Visitor.Iterator.Classes
 {
@@ -16,7 +17,16 @@ namespace Composite_Iterator_Visitor.Iterator.Classes
             while (iterator.HasNext())
             {
                 Component comp = iterator.NextComponent();
-                comp.PrintNodes();
+
+
+
+                if (comp.GetType() == typeof(Directory))
+                {
+                    Console.WriteLine("Directory: " + comp.Name);
+                    SeeFileSystem(new AllComponents(comp.GetComponents()));
+                }
+                else Console.WriteLine("      File: " + comp.Name);
+
             }
         }
     }

@@ -8,7 +8,7 @@ namespace Composite_Iterator_Visitor.Composite
 {
     public abstract class Component
     {
-        protected string? Name { get; set; }
+        public string? Name { get; set; }
         public Component(string? name) => Name = name;
         public abstract void Add(Component component);
         public abstract void Remove(Component component);
