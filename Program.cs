@@ -1,5 +1,6 @@
 ﻿
 using Composite_Iterator_Visitor.Composite;
+using Composite_Iterator_Visitor.Iterator.Classes;
 using Directory = Composite_Iterator_Visitor.Composite.Directory;
 using File = Composite_Iterator_Visitor.Composite.File;
 try
@@ -21,10 +22,13 @@ try
     diskD.Add(photosFolder);
 
     fileSystem.Add(diskD);
-    fileSystem.PrintNodes();
-    youPhotoPng.Add(iPhotoPng);
+    //fileSystem.PrintNodes();
+
+  AllComponents allComp = new AllComponents(fileSystem.GetComponents());
+    MainIterator mainIterator = new MainIterator();
+    mainIterator.SeeFileSystem(allComp);
 }
-catch (InvalidOperationException ex)
+catch (InvalidOperationException)
 {
     Console.WriteLine("Cannot add node in file!");
 }
