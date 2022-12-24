@@ -11,12 +11,12 @@ namespace State.States
         }
         public void Process(DBConnection db)
         {
-            Console.WriteLine("Processing is succesfully\topen --> process");
+            Console.WriteLine("Processing is succesfully\t(open --> process)");
             db.state = new ProcessState();
         }
         public void Close(DBConnection db)
         {
-            Console.WriteLine("Closing is succesfully\topen --> close");
+            Console.WriteLine("Closing is succesfully\t(open --> close)");
             db.state = new CloseState();
         }
     }

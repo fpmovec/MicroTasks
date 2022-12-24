@@ -7,7 +7,7 @@ namespace State.States
     {
         public void Open(DBConnection db)
         {
-            Console.WriteLine("Opening is succesfully\tclose --> open");
+            Console.WriteLine("Opening is succesfully\t(close --> open)");
             db.state = new OpenState();
         }
         public void Process(DBConnection db)

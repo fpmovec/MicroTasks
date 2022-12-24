@@ -16,7 +16,7 @@ namespace State.States
         }
         public void Close(DBConnection db)
         {
-            Console.WriteLine("Closing is succesfully\tprocess --> close");
+            Console.WriteLine("Closing is succesfully\t(process --> close)");
             db.state = new CloseState();
         }
     }
