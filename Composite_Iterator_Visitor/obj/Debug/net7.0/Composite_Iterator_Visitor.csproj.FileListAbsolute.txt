@@ -1,0 +1,15 @@
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\bin\Debug\net7.0\Composite_Iterator_Visitor.exe
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\bin\Debug\net7.0\Composite_Iterator_Visitor.deps.json
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\bin\Debug\net7.0\Composite_Iterator_Visitor.runtimeconfig.json
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\bin\Debug\net7.0\Composite_Iterator_Visitor.dll
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\bin\Debug\net7.0\Composite_Iterator_Visitor.pdb
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.csproj.AssemblyReference.cache
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.AssemblyInfoInputs.cache
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.AssemblyInfo.cs
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.csproj.CoreCompileInputs.cache
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.dll
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\refint\Composite_Iterator_Visitor.dll
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.pdb
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\Composite_Iterator_Visitor.genruntimeconfig.cache
+E:\Programming\VisualStudioProjects\Composite_Iterator_Visitor\obj\Debug\net7.0\ref\Composite_Iterator_Visitor.dll
